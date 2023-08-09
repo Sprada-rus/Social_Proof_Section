@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+
+// Primary
+$very-dark-magenta: hsl(300, 43%, 22%);
+$soft-pink: hsl(333, 80%, 67%);
+
+// Neutral
+$dark-grayish-magenta: hsl(303, 10%, 53%);
+$light-grayish-magenta: hsl(300, 28%, 90%);
+$white: hsl(0, 0%, 100%);
+
+:root {
+  font-weight: 400;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 375px;
+  min-height: 100%;
+  background-image: url(./images/bg-pattern-top-mobile.svg), url(./images/bg-pattern-bottom-mobile.svg);
+  background-position: top, bottom;
+  background-repeat: no-repeat;
+  color: $dark-grayish-magenta;
+  letter-spacing: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 1440px) {
+    background-image: url(./images/bg-pattern-top-desktop.svg), url(./images/bg-pattern-bottom-desktop.svg);
+    background-position: top left, bottom right;
+  }
+
+  footer {
+    position: relative;
+    bottom: 1rem;
+    width: 100%;
+    z-index: 0;
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      color: $soft-pink;
+      text-decoration: none;
+    }
+  }
+
+  > main {
+    width: 100%;
+    padding: 7.5rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5rem;
+
+    @media (min-width: 1440px) {
+      padding: 0;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 75vw;
+      margin: 0 auto;
+
+      section:nth-child(1) {
+        flex-basis: 35%;
+      }
+
+      section:nth-child(2) {
+        flex-basis: 60%;
+      }
+
+      section:nth-child(3) {
+        flex-basis: 100%;
+      }
+    }
+  }
+    
+  img {
+    display: block;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: $very-dark-magenta;
+    line-height: .8;
+  }
+
+  h1, p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}
+
+.social-proof-info {
+  text-align: center;
+
+  @media (min-width: 1440px) {
+    text-align: left;
+    
+    h1 {
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.1em;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-top: 1.5em;
+    }
+  }
+}
+
+.rating {
+  margin: 1.5rem 0;
+
+  > .rating__item + .rating__item {
+    margin-top: 1rem;
+  }
+
+  .rating__item {
+    padding: 1rem 2rem;
+    background-color: $light-grayish-magenta;
+    border-radius: 1rem;
+    text-align: left;
+
+    @media (min-width: 1440px) {
+      width: 70%;
+      padding: 1rem 2rem;
+
+      > * {
+        display: inline-block;
+      }
+
+      > * + * {
+        margin-left: 2rem;
+      }
+    }
+
+    .stars {
+      margin: 0 auto 1rem;
+
+      @media (min-width: 1440px) { 
+        margin: 0 auto;  
+      }
+    }
+
+    .stars > * {
+      display: inline-block;
+    }
+
+    .desc p{
+      margin-bottom: 0;
+      font-weight: 700;
+      color: $very-dark-magenta;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  
+
+  @for $i from 2 through 3 {
+    .rating > .rating__item:nth-child(#{$i}) {
+      margin-left: calc(6.725vw * (#{$i} - 1));
+    }
+  }
+
+  @for $i from 2 through 3 {
+    .feedback > .feedback__item:nth-child(#{$i}) {
+      margin-top: calc(5vh * (#{$i} - 1)) !important;
+      margin-left: 1rem;
+    }
+  }
+} 
+
+
+.feedback {
+  margin: 1.5rem 0;
+
+  @media (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  > .feedback__item + .feedback__item {
+    margin-top: 1rem;
+  }
+
+  .feedback__item {
+    padding: 2rem;
+    background-color: $very-dark-magenta;
+    border-radius: 1rem;
+    color: $light-grayish-magenta;
+    height: 100%;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .user-info > * {
+      display: inline-block;
+    }
+
+    .user-info > * + * {
+      margin-left: 1.2rem;
+    }
+
+    .user-info__img {
+      max-width: 2.5rem;
+      border-radius: 100%;
+    }
+
+    .user-info__data > * {
+      margin-bottom: 0;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+
+    .user-info__data > .status {
+      color: $soft-pink;
+    }
+
+    .user-feedback {
+      line-height: 1.2;
+      letter-spacing: .02em;
+    }
+  }
+
+
+}
